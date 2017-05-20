@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-title>{{viewTitle}}</ion-title>
+        <ion-buttons>
+            <button ion-button (click)="today()" class="today-icon">Today</button>
+        </ion-buttons>
+        <ion-buttons end>
+            <button ion-button (click)="showDetail()">
+              <ion-icon name="add"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+ 
+<ion-content class="has-header">
+    <calendar [eventSource]="eventSource"
+              [currentDate]="calendar.currentDate"
+              (onCurrentDateChanged)="onCurrentDateChanged($event)"
+              (onEventSelected)="onEventSelected($event)"
+              (onTitleChanged)="onViewTitleChanged($event)"
+              (onTimeSelected)="onTimeSelected($event)"
+              step="30">
+    </calendar>
+    <ion-list inset>
+        <ion-item *ngFor="let calendar of calendars" (click)="showDetail(calendar)">
+          <div item-left>{{ calendar.title }}</div>
+          <div item-right><ion-icon name="arrow-forward"></ion-icon></div>
+        </ion-item>
+      </ion-list>
+</ion-content>

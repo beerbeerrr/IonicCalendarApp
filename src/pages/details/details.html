@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Add/Delete Event</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="outer-content">
+    <ion-list>
+        <ion-item>
+            <ion-input placeholder="Title" clearInput [(ngModel)]="calendar.title"></ion-input>
+        </ion-item>
+    </ion-list>
+
+    <ion-list>
+        <ion-item>
+            <ion-label>Start Date</ion-label>
+            <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="isoDate"></ion-datetime>
+        </ion-item>
+        <ion-item>
+            <ion-label>At Time</ion-label>
+            <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" placeholder="12:00 AM" [(ngModel)]="calendar.time"></ion-datetime>
+        </ion-item>
+    </ion-list>
+
+    <ion-list>
+        <ion-item>
+            <ion-textarea placeholder="Notes" rows="5" [(ngModel)]="calendar.note"></ion-textarea>
+        </ion-item>
+    </ion-list>
+
+    <div text-center>
+        <button ion-button block (click)="save()">Save/Edit</button>
+        <button ion-button block color="danger" (click)="delete(calendar)">Delete</button>
+    </div>
+</ion-content>
+<style>
+  ion-list:first-child {
+    margin-top: 32px;
+  }
+  ion-list + ion-list {
+    margin-top: 0;
+  }
+</style>
